@@ -1,0 +1,34 @@
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="content-inner">
+      <div class="header">
+        <div class="emoji">🌿</div>
+        <div class="title">欢迎您来自 <span id="location" class="highlight">定位中...</span> 的朋友！</div>
+      </div>
+      <ul class="info-list">
+        <li><span class="icon">🐳</span> 今天是 <span id="date"></span></li>
+        <li><span class="icon">🐾</span> 您的IP是：<span id="ip" class="highlight">获取中...</span></li>
+        <li><span class="icon">💦</span> 您使用的是 <span id="os"></span> 操作系统</li>
+        <li><span class="icon">🕸️</span> 您使用的是 <span id="browser"></span> 浏览器</li>
+      </ul>
+    </div>
+    <div class="counter-block">
+      <img src="https://moe.8845.top/get/?name=MyCounter&theme=capoo-1" alt="网站访问计数器" />
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js/main.js"></script>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js/1style.css">
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js/1main.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/aixin.js"></script> 
+<span class="js-cursor-container"></span>
+<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/yinghua.js"></script> 
+<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/xiaoxingxing.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/yanhuabowen.js"></script>
+<script src="https://kb.175359.xyz/live2d/loads.js"></script>
+<style>kbd.bg-muted {  /* 移除页脚右键盘符号及字母 */display: none !important;}</style>
