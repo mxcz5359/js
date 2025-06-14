@@ -1,0 +1,60 @@
+<style>
+  * {
+    font-family: 'HarmonyOS Sans', sans-serif !important;
+    font-size: 16px;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
+  }
+
+  html, body {
+    height: 100% !important;
+    background: url("https://t.alcy.cc/moez") no-repeat center center fixed !important;
+    background-size: cover !important;
+  }
+
+  body {
+    cursor: url(https://raw.githubusercontent.com/mxcz5359/surge/refs/heads/main/cursor_1.png), default;
+  }
+
+  a:hover {
+    cursor: url(https://raw.githubusercontent.com/mxcz5359/surge/refs/heads/main/cursor_2.png), pointer;
+  }
+
+  .el-header {
+    background-color: transparent !important;
+    backdrop-filter: blur(4px);
+    box-shadow: none !important;
+  }
+
+  img[src*="https://api.dicebear.com/7.x/notionists/svg"] {
+    content: url("https://img.003666.xyz/2025/05/24/e6c54e4c9202c540001.avif") !important;
+    width: 100px !important;
+    height: auto !important;
+    margin-top: -0px;
+  }
+
+  img[src*="/dashboard/logo.svg"] {
+    content: url("https://raw.githubusercontent.com/mxcz5359/surge/refs/heads/main/favicon.ico") !important;
+  }
+
+  footer {
+    display: none !important;
+  }
+
+  .el-container {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .el-card, .el-message-box, .el-dialog {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .el-text, .el-button, .el-table, .el-form-item__label, .el-form-item__content, .el-menu-item, .el-submenu__title {
+    color: #333 !important;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .el-text-light, .el-button--text, .el-link {
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+</style>
