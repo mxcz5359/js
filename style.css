@@ -1,0 +1,85 @@
+/* 保存为 style.css */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #f6fafd;
+  font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+}
+.container {
+  max-width: 720px;
+  min-height: 450px;
+  margin: 40px auto;
+  background: url('https://t.alcy.cc/bd') center center/cover no-repeat;
+  border-radius: 18px;
+  box-shadow: 0 5px 24px 0 rgba(74,120,255,0.08), 0 2px 8px rgba(0,0,0,0.04);
+  padding: 38px 28px 32px 28px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-clip: padding-box;
+}
+.content-inner {
+  min-height: 300px;
+}
+.header,
+.info-list {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.7), 0 0 2px #fff;
+}
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.header .emoji {
+  font-size: 2em;
+  margin-right: 12px;
+}
+.header .title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #3d4e77;
+  letter-spacing: 1px;
+}
+.info-list {
+  margin: 0;
+  padding: 0 0 0 8px;
+  list-style: none;
+  font-size: 1.12em;
+  color: #414a60;
+}
+.info-list li {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+.info-list .icon {
+  font-size: 1.2em;
+  margin-right: 8px;
+  color: #6ba4ff;
+}
+.highlight {
+  color: #e74c3c;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.counter-block {
+  margin-top: 32px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+@media (max-width: 650px) {
+  .container {
+    max-width: 98vw;
+    padding: 12px 2vw 16px 2vw;
+    min-height: 350px;
+  }
+  .content-inner {
+    min-height: 220px;
+  }
+}
