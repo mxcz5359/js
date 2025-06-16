@@ -1,5 +1,5 @@
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js/1.css">
 </head>
 <body>
   <div class="container">
@@ -19,12 +19,12 @@
       <img src="https://moe.8845.top/get/?name=MyCounter&theme=capoo-1" alt="网站访问计数器" />
     </div>
   </div>
-<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js/main.js"></script>
-
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js/1.js"></script>
+<script src="https://ping0.cc/geo/jsonp/callback"></script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js/3.css">
-<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js/3.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js/2.css">
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js/2.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/aixin.js"></script> 
 <span class="js-cursor-container"></span>
 <script src="https://cdn.jsdelivr.net/gh/mocchen/cssmeihua/js/yinghua.js"></script> 
