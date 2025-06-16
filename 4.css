@@ -5,14 +5,14 @@ body {
   background: #f6fafd;
   font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
 }
-.container {
-    max-width: 1200px;  /* 加宽到1200px */
+  .container {
+    max-width: 800px;  /* 调整为800px，比原来1200px更紧凑 */
     min-height: 450px;
     margin: 40px auto;
     background: url('https://t.alcy.cc/bd') center center/cover no-repeat;
     border-radius: 18px;
     box-shadow: 0 5px 24px 0 rgba(74,120,255,0.08), 0 2px 8px rgba(0,0,0,0.04);
-    padding: 48px 38px 42px 38px;  /* 增加内边距 */
+    padding: 38px 32px 36px 32px;  /* 微调内边距 */
     position: relative;
     overflow: hidden;
     display: flex;
