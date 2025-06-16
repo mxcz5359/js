@@ -6,7 +6,7 @@ body {
   font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
 }
 .container {
-    max-width: 950px;  /* 调整为1000px */
+    max-width: 1000px;  /* 调整为1000px */
     min-height: 450px;
     margin: 40px auto;
     background: url('https://t.alcy.cc/bd') center center/cover no-repeat;
