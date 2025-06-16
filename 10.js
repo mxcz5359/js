@@ -28,13 +28,11 @@ document.getElementById('browser').innerText = getBrowser();
 function setIpInfo(ip, location) {
   document.getElementById('ip').innerText = ip || '获取失败';
   
-  // 精简位置信息，处理重复地区名但保留三级结构
+  // 精简位置信息
   let shortLocation = '未知地区';
   if(location) {
-    // 1. 去除所有破折号和云服务商信息
-    shortLocation = location.replace(/—/g, '')
-                          .replace(/AWS|亚马逊云|阿里云|腾讯云|Google Cloud|Microsoft Azure|搬瓦工/gi, '')
-                          .trim();
+    // 1. 删除破折号及后面的所有内容
+    shortLocation = location.split(/[—-]/)[0].trim();
     
     // 2. 分割并处理各部分
     const parts = shortLocation.split(/[,，、\s]+/) // 支持多种分隔符
@@ -49,9 +47,8 @@ function setIpInfo(ip, location) {
       }
     }
     
-    // 4. 组合最终结果（最多保留前三部分，但确保不重复）
+    // 4. 组合最终结果（最多保留前三部分）
     if (uniqueParts.length >= 3) {
-      // 检查是否是"国家 州 城市"结构（如"美国 加州 洛杉矶"）
       shortLocation = `${uniqueParts[0]} ${uniqueParts[1]} ${uniqueParts[2]}`;
     } else if (uniqueParts.length >= 2) {
       shortLocation = `${uniqueParts[0]} ${uniqueParts[1]}`;
