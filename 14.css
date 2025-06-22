@@ -44,61 +44,75 @@
   }
 
   .header .emoji {
-    font-size: 2.2em; /* 增大emoji大小 */
+    font-size: 2.2em; /* 增大了emoji大小 */
     margin-right: 15px;
     filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
   }
 
   .header .title {
-    font-size: 2em; /* 增大标题字号 */
-    font-weight: 700;
-    color: #9c27b0; /* 紫色 */
+    font-size: 2em; /* 增大了标题字体 */
+    font-weight: 800; /* 加粗 */
+    color: #FF6B6B; /* 醒目珊瑚红色 */
     letter-spacing: 0.5px;
     text-shadow: none;
+    text-transform: uppercase; /* 大写字母 */
   }
 
   .info-list {
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: 1.2em; /* 增大列表文字 */
+    font-size: 1.1em;
     line-height: 1.6;
-  }
-
-  /* 为每行设置不同颜色 */
-  .info-list li:nth-child(1) {
-    color: #ffffff; /* 白色 */
-  }
-  .info-list li:nth-child(2) {
-    color: #03a9f4; /* 天蓝色 */
-  }
-  .info-list li:nth-child(3) {
-    color: #4caf50; /* 淡绿色 */
-  }
-  .info-list li:nth-child(4) {
-    color: #9c27b0; /* 紫色 */
   }
 
   .info-list li {
     margin: 14px 0;
     display: flex;
     align-items: center;
-    padding: 8px 0;
-    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.2); /* 轻微背景提高可读性 */
+  }
+
+  /* 为每行设置不同颜色 */
+  .info-list li:nth-child(1) {
+    color: #9B59B6; /* 紫色 */
+  }
+  .info-list li:nth-child(2) {
+    color: #FFFFFF; /* 白色 */
+  }
+  .info-list li:nth-child(3) {
+    color: #3498DB; /* 天蓝色 */
+  }
+  .info-list li:nth-child(4) {
+    color: #2ECC71; /* 淡绿色 */
   }
 
   .info-list .icon {
     font-size: 1.3em;
-    margin-right: 12px;
-    color: #4a89ff;
+    margin-right: 15px;
     min-width: 30px;
     text-align: center;
     filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
   }
 
+  /* 图标颜色与文字颜色匹配 */
+  .info-list li:nth-child(1) .icon {
+    color: #9B59B6;
+  }
+  .info-list li:nth-child(2) .icon {
+    color: #FFFFFF;
+  }
+  .info-list li:nth-child(3) .icon {
+    color: #3498DB;
+  }
+  .info-list li:nth-child(4) .icon {
+    color: #2ECC71;
+  }
+
   .highlight {
-    color: #e74c3c;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.5px;
     text-shadow: none;
   }
@@ -123,7 +137,7 @@
       font-size: 1.6em;
     }
     .info-list {
-      font-size: 1.1em;
+      font-size: 1em;
     }
     .info-list li {
       margin: 12px 0;
