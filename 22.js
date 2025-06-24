@@ -1,4 +1,4 @@
-window.CustomBackgroundImage="https://api.vvhan.com/api/wallpaper/acg"; /* 页面背景图 */
+window.CustomBackgroundImage="https://t.alcy.cc/moez"; /* 页面背景图 */
 window.CustomLogo = "https://raw.githubusercontent.com/mxcz5359/surge/refs/heads/main/favicon.ico"; /* 自定义Logo */
 window.ShowNetTransfer  = "true"; /* 卡片显示上下行流量 */
 /*window.DisableAnimatedMan  = "true";*/     /* 关掉动画人物插图 */
