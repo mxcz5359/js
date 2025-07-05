@@ -1,8 +1,8 @@
-window.CustomBackgroundImage="https://t.alcy.cc/moez"; /* 页面背景图 */
+window.CustomBackgroundImage="https://php.535359.xyz/"; /* 页面背景图 */
 window.CustomLogo = "https://raw.githubusercontent.com/mxcz5359/surge/refs/heads/main/favicon.ico"; /* 自定义Logo */
 window.ShowNetTransfer  = "true"; /* 卡片显示上下行流量 */
 /*window.DisableAnimatedMan  = "true";*/     /* 关掉动画人物插图 */
-window.CustomIllustration = 'https://raw.githubusercontent.com/mxcz5359/clash/refs/heads/main/nz2.png';
+window.CustomIllustration = 'https://img.535359.xyz/i/2025/07/05/126aa6d917803f8d001.webp';
 window.CustomDesc ="MyVps"; /* 自定义描述 */
 window.CustomLinks = '[{"link":"https://mybox.mxcz.xyz:5359/","name":"Mybox"},{"link":"https://ai.mxcz.xyz:5359/","name":"Ai"}]';
 
