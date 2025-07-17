@@ -1,23 +1,25 @@
-document.addEventListener('DOMContentLoaded', function() {
-  function show_date_time(){
-    window.setTimeout(show_date_time, 1000); // 改用函数引用而非字符串
-    BirthDay = new Date("2020-05-01T10:00:01"); // ISO格式
-    today = new Date();
-    timeold = today.getTime() - BirthDay.getTime();
+  // 确保DOM完全加载后执行
+  document.addEventListener('DOMContentLoaded', function() {
     
-    daysold = Math.floor(timeold / (24*60*60*1000));
-    hrsold = Math.floor((timeold % (24*60*60*1000)) / (60*60*1000));
-    minsold = Math.floor((timeold % (60*60*1000)) / (60*1000));
-    seconds = Math.floor((timeold % (60*1000)) / 1000);
-    
-    span_dt_dt.innerHTML = 
-      '<span style="color:#C40000">'+daysold+'</span> 天 ' +
-      '<span style="color:#C40000">'+hrsold+'</span> 时 ' +
-      '<span style="color:#C40000">'+minsold+'</span> 分 ' +
-      '<span style="color:#C40000">'+seconds+'</span> 秒';
-  }
-  show_date_time();
-});
+    // ===== 1. 显示运行时间 =====
+    function updateRunTime() {
+      const startDate = new Date("2020-05-01T10:00:00"); // 修改为你的建站时间
+      const now = new Date();
+      const diff = now - startDate;
+      
+      // 计算时间差
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      // 显示结果
+      document.getElementById('span_dt_dt').innerHTML = 
+        `${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`;
+      
+      // 每秒更新一次
+      setTimeout(updateRunTime, 1000);
+    }
 
 // 显示日期
 const date = new Date();
