@@ -1,22 +1,4 @@
 <style>
-section.bg-card\/70 {
-  background-color: transparent !important;
-}
-.bg-card\/70 {
-  background-color: hsl(var(--card) / .4); 
-}
-kbd.bg-muted {  /* 移除页脚右键盘符号及字母 */
-  display: none !important;
-}
-.server-info > div:nth-child(3) .bg-card\/70 {
-  background-color: hsl(var(--card) / .9); 
-}
-.server-info > div:nth-child(4) .bg-card\/70 {
-  background-color: hsl(var(--card) / .9); 
-}
-footer {
-  display: none !important;
-}
 p.text-base.font-semibold,
 p.text-sm.font-medium.opacity-50 {
     display: none !important;
