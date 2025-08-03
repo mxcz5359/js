@@ -6,20 +6,12 @@
     duration: 500,             
     enableLog: false           
   };
-window.CustomBackgroundImage="https://php.535359.xyz/"; /* 页面背景图 */
-window.CustomLogo = "https://mxcz.useruno.com/mxcz5359/2025073068898fa1e0c2e.png"; /* 自定义Logo */
-window.ShowNetTransfer  = "true"; /* 卡片显示上下行流量 */
-/*window.DisableAnimatedMan  = "true";*/     /* 关掉动画人物插图 */
-window.CustomIllustration = 'https://mxcz.useruno.com/mxcz5359/20250730688990044dbdf.png';
-window.CustomDesc ="MyVps"; /* 自定义描述 */
-window.FixedTopServerName = true; /* 是否固定顶部显示服务器名称, 默认不固定 */
-window.CustomLinks = '[{"link":"https://mybox.535359.xyz/","name":"Mybox"},{"link":"https://ai.535359.xyz:5359/","name":"Ai"}]';
 
 // 自定义字体：LXGW WenKai
 var link = document.createElement('link');
-link.rel = 'stylesheet';
-link.href = 'https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont/style.css';
-document.head.appendChild(link);
+link。rel = 'stylesheet';
+link。href = 'https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont/style.css';
+document。head.appendChild(link);
 
 // 新增的图片观察器
 var imgObserver = new MutationObserver(function(mutationsList, observer) {
