@@ -1,0 +1,50 @@
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s, transform 0.3s;
+    display: none;
+}
+#backToTop:hover {
+    transform: scale(1.1);
+}
+#backToTop::before {
+    content: "🌿";
+    font-size: 24px;
+    display: block;
+    line-height: 60px;
+    text-align: center;
+}
+
+/* 碎片样式 */
+.fragment {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    transform-origin: center;
+    animation: shatter 1.5s ease-out forwards;
+    pointer-events: none;
+    z-index: 9988;
+    background-color: rgba(173, 216, 230, 0.7);
+}
+@keyframes shatter {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--dx), var(--dy)) rotate(var(--angle)) scale(0.5);
+        opacity: 0;
+    }
+}
