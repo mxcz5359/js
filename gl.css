@@ -1,0 +1,42 @@
+<style>
+section.bg-card\/70 {
+  background-color: transparent !important;
+}
+.bg-card\/70 {
+  background-color: hsl(var(--card) / .4); 
+}
+kbd.bg-muted {  /* 移除页脚右键盘符号及字母 */
+  display: none !important;
+}
+.server-info > div:nth-child(3) .bg-card\/70 {
+  background-color: hsl(var(--card) / .9); 
+}
+.server-info > div:nth-child(4) .bg-card\/70 {
+  background-color: hsl(var(--card) / .9); 
+}
+footer {
+  display: none !important;
+}
+p.text-base.font-semibold,
+p.text-sm.font-medium.opacity-50 {
+    display: none !important;
+}
+/* 修改时间显示字体样式为淡天蓝色 */
+.flex.text-sm.font-medium.mt-0\.5 {
+    font-size: 2.5rem !important;
+    font-weight: bold;
+    opacity: 0.9 !important;
+    justify-content: center !important;
+    align-items: baseline !important;
+    color: #87CEFA !important; /* 淡天蓝色 */
+}
+
+/* 修改时间数字居中样式为淡天蓝色 */
+.number__inner {
+    display: inline-block !important;
+    width: 2ch !important;
+    text-align: center !important;
+    color: #87CEFA !important; /* 淡天蓝色 */
+}
+
+</style>
