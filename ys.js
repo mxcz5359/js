@@ -73,8 +73,8 @@
         const downloadSpeed = parseSpeed(downloadElem.textContent.trim());
         uploadElem.style.transition = 'color 0.5s ease, transform 0.5s ease';
         downloadElem.style.transition = 'color 0.5s ease, transform 0.5s ease';
-        uploadElem.style.color = speedToColor(uploadSpeed, MAX_SPEED, 'upload');
-        downloadElem.style.color = speedToColor(downloadSpeed, MAX_SPEED, 'download');
+        uploadElem.style.setProperty("color", speedToColor(uploadSpeed, MAX_SPEED, 'upload'), "important");
+        downloadElem.style.setProperty("color", speedToColor(downloadSpeed, MAX_SPEED, 'download'), "important");
         applyEffect(uploadElem, uploadSpeed, 'upload');
         applyEffect(downloadElem, downloadSpeed, 'download');
       }
