@@ -155,6 +155,18 @@
         // 应用对数颜色渐变
         uploadElem.style.color = speedToColor(uploadSpeed, MAX_SPEED, 'upload');
         downloadElem.style.color = speedToColor(downloadSpeed, MAX_SPEED, 'download');
+     // 设置颜色（强制覆盖 !important）
+      uploadElem.style.setProperty("color", speedToColor(uploadSpeed, MAX_SPEED, "upload"), "important");
+      downloadElem.style.setProperty("color", speedToColor(downloadSpeed, MAX_SPEED, "download"), "important");
+
+      // 添加背景半透明遮罩，保证在任何背景图下都能看清
+      uploadElem.style.setProperty("background-color", "rgba(0,0,0,0.4)", "important");
+      downloadElem.style.setProperty("background-color", "rgba(0,0,0,0.4)", "important");
+      uploadElem.style.setProperty("padding", "0 3px", "important");
+      downloadElem.style.setProperty("padding", "0 3px", "important");
+      uploadElem.style.setProperty("border-radius", "3px", "important");
+      downloadElem.style.setProperty("border-radius", "3px", "important");
+
 
         // 应用动画特效
         applyEffect(uploadElem, uploadSpeed, 'upload');
