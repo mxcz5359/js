@@ -124,9 +124,6 @@
     } else if (speed > 10 * 1024 * 1024) { // 10-20MB/s
       classList.add(type === 'upload' ? 'speed-boost-1' : 'speed-boost-1-dl');
     }
-      .speed-text {
-      text-shadow: 0 0 3px #000; /* 保证深色背景下也能看清 */
-    }
   }
 
   /**
