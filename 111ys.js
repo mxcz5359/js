@@ -148,6 +148,14 @@
         const uploadSpeed = parseSpeed(uploadStr);
         const downloadSpeed = parseSpeed(downloadStr);
 
+        
+        // 设置颜色（强制覆盖）
+        uploadElem.style.setProperty('color', speedToColor(uploadSpeed, MAX_SPEED, 'upload'), 'important');
+        downloadElem.style.setProperty('color', speedToColor(downloadSpeed, MAX_SPEED, 'download'), 'important');
+
+        // 添加通用描边类，保证背景下也清晰
+        uploadElem.classList.add('speed-text');
+        downloadElem.classList.add('speed-text');
         // 设置颜色和动画过渡
         uploadElem.style.transition = 'color 0.5s ease, transform 0.5s ease';
         downloadElem.style.transition = 'color 0.5s ease, transform 0.5s ease';
