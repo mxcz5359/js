@@ -155,17 +155,18 @@
         // 应用对数颜色渐变
         uploadElem.style.color = speedToColor(uploadSpeed, MAX_SPEED, 'upload');
         downloadElem.style.color = speedToColor(downloadSpeed, MAX_SPEED, 'download');
-     // 设置颜色（强制覆盖 !important）
-      uploadElem.style.setProperty("color", speedToColor(uploadSpeed, MAX_SPEED, "upload"), "important");
-      downloadElem.style.setProperty("color", speedToColor(downloadSpeed, MAX_SPEED, "download"), "important");
+// 强制颜色，避免被背景覆盖
+uploadElem.style.setProperty("color", speedToColor(uploadSpeed, MAX_SPEED, "upload"), "important");
+downloadElem.style.setProperty("color", speedToColor(downloadSpeed, MAX_SPEED, "download"), "important");
 
-      // 添加背景半透明遮罩，保证在任何背景图下都能看清
-      uploadElem.style.setProperty("background-color", "rgba(0,0,0,0.4)", "important");
-      downloadElem.style.setProperty("background-color", "rgba(0,0,0,0.4)", "important");
-      uploadElem.style.setProperty("padding", "0 3px", "important");
-      downloadElem.style.setProperty("padding", "0 3px", "important");
-      uploadElem.style.setProperty("border-radius", "3px", "important");
-      downloadElem.style.setProperty("border-radius", "3px", "important");
+// 防止背景混合模式影响
+uploadElem.style.setProperty("mix-blend-mode", "normal", "important");
+downloadElem.style.setProperty("mix-blend-mode", "normal", "important");
+
+// 加一个黑色描边，保证在花哨背景下也能看清
+uploadElem.style.setProperty("text-shadow", "0 0 3px #000, 0 0 5px #000", "important");
+downloadElem.style.setProperty("text-shadow", "0 0 3px #000, 0 0 5px #000", "important");
+
 
 
         // 应用动画特效
