@@ -1,44 +1,3 @@
-/* 🖱 鼠标悬停时的选中效果 */
-[class*="bg-card"]:hover {
-  transform: scale(1.02);
-  border-color: rgba(0, 200, 255, 0.6);
-  box-shadow: 0 0 16px rgba(0, 200, 255, 0.4);
-  cursor: pointer;
-}
-
-.dark [class*="bg-card"]:hover {
-  border-color: rgba(0, 200, 255, 0.4);
-  box-shadow: 0 0 16px rgba(0, 200, 255, 0.3);
-}
-
-/* 🌈 渐变边框动画（可选） */
-[class*="bg-card"]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(0,200,255,0.4), rgba(255,0,150,0.4));
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: destination-out;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  opacity: 0;
-}
-
-[class*="bg-card"]:hover::before {
-  opacity: 1;
-}
-    /* 不显示右上角语言切换按钮 */
- [id="radix-:r0:"] {
-     display: none;
-}
-  /* 不显示右上角主题切换按钮 */
- [id="radix-:r2:"] {
-     display: none;
-    }
-
 .bg-neutral-100 {
     background-color: rgba(255, 255, 255, 0.6) !important;
     --tw-bg-opacity: 1 !important; /* 保留透明度变量 */
@@ -113,5 +72,50 @@ footer {
 /* muted 系列背景，透明度 0.1 */
 .bg-muted\/30 {
     background-color: rgba(255, 255, 255, 0.1) !important; /* 白色 + 0.1 透明度 */
+}
+
+  .dark .text-muted-foreground {
+    color: #87CEEB;
+}
+
+/* 🖱 鼠标悬停时的选中效果 */
+[class*="bg-card"]:hover {
+  transform: scale(1.02);
+  border-color: rgba(0, 200, 255, 0.6);
+  box-shadow: 0 0 16px rgba(0, 200, 255, 0.4);
+  cursor: pointer;
+}
+
+.dark [class*="bg-card"]:hover {
+  border-color: rgba(0, 200, 255, 0.4);
+  box-shadow: 0 0 16px rgba(0, 200, 255, 0.3);
+}
+
+/* 🌈 渐变边框动画（可选） */
+[class*="bg-card"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,200,255,0.4), rgba(255,0,150,0.4));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+[class*="bg-card"]:hover::before {
+  opacity: 1;
+}
+    /* 不显示右上角语言切换按钮 */
+ [id="radix-:r0:"] {
+     display: none;
+}
+  /* 不显示右上角主题切换按钮 */
+ [id="radix-:r2:"] {
+     display: none;
 }
 
