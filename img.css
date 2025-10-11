@@ -1,0 +1,80 @@
+    :root {
+      --custom-border-color: rgba(13, 11, 9, 0.1);
+      --custom-background-color: rgba(13, 11, 9, 0.4);
+    }
+
+    /* 深色模式 */
+    html.dark body {
+      color: #f4f5f6;
+      background: unset;
+      position: relative;
+    }
+
+    /* 背景图片容器 */
+    .image-box {
+      position: fixed;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+
+    /* 背景图片 */
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 保持比例铺满 */
+      filter: brightness(0.75); /* 调暗背景，突出前景 */
+    }
+
+    /* 内容容器 */
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      color: #fff;
+    }
+
+    /* 内容卡片 */
+    .card {
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      border-radius: 16px;
+      padding: 40px 60px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h1 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+
+    .btn {
+      background-color: rgb(34, 197, 94);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: rgb(22, 163, 74);
+      transform: translateY(-2px);
+    }
