@@ -1,12 +1,12 @@
 .bg-neutral-100 {
-    background-color: rgba(255, 255, 255, 0.6) !important;
-    --tw-bg-opacity: 1 !important; /* 保留透明度变量 */
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    --tw-bg-opacity: 1 !important; /* 流量条透明度变量 */
 }
-/* 半透明灰色填充改为白色 */
+/* 地图半透明灰色填充改为白色 */
 .fill-neutral-200\/50 {
     fill: rgba(255, 255, 255, 0.7) !important; 
 }
-
+/* 地图框透明 */
 section.bg-card\/70 {
   background-color: transparent !important;
 }
@@ -51,7 +51,7 @@ footer {
 .bg-stone-200,
 .bg-stone-600,
 .bg-stone-900 {
-    background-color: rgba(0, 128, 128, 0.5) !important; /* 绿色主导的淡青色，50%强度 */
+    background-color: rgba(0, 128, 128, 1) !important; /* 绿色主导的淡青色，50%强度 */
     --tw-bg-opacity: 1 !important;
 }
 
@@ -62,7 +62,7 @@ footer {
 
 /* 次级背景 */
 .bg-secondary {
-    background-color: rgba(200, 180, 255, 0.5) !important; /* 淡紫色，半透明效果 */
+    background-color: rgba(200, 180, 255, 0.85) !important; /* 淡紫色，半透明效果 */
 }
 
 /* 弹出框背景 */
@@ -137,4 +137,3 @@ footer {
  [id="radix-:r2:"] {
      display: none;
 }
-
