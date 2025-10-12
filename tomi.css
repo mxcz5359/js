@@ -1,0 +1,138 @@
+.bg-neutral-100 {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    --tw-bg-opacity: 1 !important; /* 流量条透明度变量 */
+}
+/* 地图半透明灰色填充改为白色 */
+.fill-neutral-200\/50 {
+    fill: rgba(255, 255, 255, 0.7) !important; 
+}
+/* 地图框透明 */
+section.bg-card\/70 {
+  background-color: transparent !important;
+}
+.bg-card\/70 {
+  background-color: hsl(var(--card) / .3); 
+}
+kbd.bg-muted {  /* 移除页脚右键盘符号及字母 */
+  display: none !important;
+}
+.server-info > div:nth-child(3) .bg-card\/70 {
+  background-color: hsl(var(--card) / .5); 
+}
+.server-info > div:nth-child(4) .bg-card\/70 {
+  background-color: hsl(var(--card) / .5); 
+}
+footer {
+  display: none !important;
+}
+
+.fill-green-700 {
+    fill: #0f9d58 !important; /* 浓翡翠绿 */
+}
+
+.from-green-500\/90 {
+    --tw-gradient-from: rgba(150, 255, 255, 0.9) var(--tw-gradient-from-position); /* 起始色：更浓的青色 */
+    --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position);      /* 结束色：透明白 */
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.from-red-500\/80 {
+    --tw-gradient-from: rgb(255, 150, 150) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(255, 150, 150) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+
+.to-green-600 {
+    --tw-gradient-to: rgba(224, 255, 255, 1) var(--tw-gradient-to-position);
+}
+
+/*说明*/
+.bg-stone-200,
+.bg-stone-600,
+.bg-stone-900 {
+    background-color: rgba(0, 128, 128, 1) !important; /* 绿色主导的淡青色，50%强度 */
+    --tw-bg-opacity: 1 !important;
+}
+
+/*分组*/
+.bg-stone-100\/70 {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 次级背景 */
+.bg-secondary {
+    background-color: rgba(200, 180, 255, 0.85) !important; /* 淡紫色，半透明效果 */
+}
+
+/* 弹出框背景 */
+.bg-popover {
+    background-color: rgba(255, 255, 255, 0.75) !important; /* 白色半透明 */
+}
+/* muted 系列背景，透明度 0.1 */
+.bg-muted\/30 {
+    background-color: rgba(255, 255, 255, 0.1) !important; /* 白色 + 0.1 透明度 */
+}
+
+  .dark .text-muted-foreground {
+    color: #87CEEB;
+}
+
+/* 🌤 通用毛玻璃卡片样式：适配所有 bg-card 类 */
+[class*="bg-card"] {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* 🌙 暗色模式支持 */
+.dark [class*="bg-card"] {
+  background-color: rgba(30, 30, 30, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+[class*="border-"] {
+    border-color: #fff !important;
+
+/* 🖱 鼠标悬停时的选中效果 */
+[class*="bg-card"]:hover {
+  transform: scale(1.02);
+  border-color: rgba(0, 200, 255, 0.6);
+  box-shadow: 0 0 16px rgba(0, 200, 255, 0.4);
+  cursor: pointer;
+}
+
+.dark [class*="bg-card"]:hover {
+  border-color: rgba(0, 200, 255, 0.4);
+  box-shadow: 0 0 16px rgba(0, 200, 255, 0.3);
+}
+
+/* 🌈 渐变边框动画（可选） */
+[class*="bg-card"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,200,255,0.4), rgba(255,0,150,0.4));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+[class*="bg-card"]:hover::before {
+  opacity: 1;
+}
+    /* 不显示右上角语言切换按钮 */
+ [id="radix-:r0:"] {
+     display: none;
+}
+  /* 不显示右上角主题切换按钮 */
+ [id="radix-:r2:"] {
+     display: none;
