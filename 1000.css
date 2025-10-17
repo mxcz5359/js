@@ -12,18 +12,7 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      overflow: hidden;
-      transition: background 0.8s ease;
-    }
-
-    /* 日间模式 */
-    body.day-mode {
-      background: #f5f7fa;
-    }
-
-    /* 夜间模式 */
-    body.night-mode {
-      background: #1a1a2e;
+      background: transparent;
     }
 
     .container {
