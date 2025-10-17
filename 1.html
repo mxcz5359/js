@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎访问</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+      background: transparent;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      min-height: 380px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.8s ease;
+      z-index: 1;
+      box-sizing: border-box;
+    }
+
+    /* 日间容器样式 */
+    body.day-mode .container {
+      background: transparent;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* 夜间容器样式 */
+    body.night-mode .container {
+      background: transparent;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+    }
+
+    .container::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      animation: glow 8s ease-in-out infinite;
+      pointer-events: none;
+      transition: background 0.8s ease;
+    }
+
+    body.day-mode .container::after {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    }
+
+    body.night-mode .container::after {
+      background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, transparent 70%);
+    }
+
+    @keyframes glow {
+      0%, 100% { opacity: 0.3; transform: rotate(0deg); }
+      50% { opacity: 0.6; transform: rotate(180deg); }
+    }
+
+    .content-inner {
+      flex: 1;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .header .emoji {
+      font-size: 2.5em;
+      margin-right: 15px;
+      animation: float 3s ease-in-out infinite;
+      transition: filter 0.8s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .header .emoji:hover {
+      transform: scale(1.15) rotate(15deg);
+      animation: none;
+    }
+    
+    .header .emoji:active {
+      transform: scale(0.95);
+    }
+
+    body.day-mode .header .emoji {
+      filter: drop-shadow(0 0 10px rgba(255, 223, 0, 0.6));
+    }
+
+    body.night-mode .header .emoji {
+      filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.6));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .header .title {
+      font-size: 2em;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 5px 0;
+      transition: all 0.8s ease;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    body.day-mode .header .title {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    body.night-mode .header .title {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .header .title .highlight {
+      font-weight: 900;
+    }
+
+
+
+    .info-list {
+      list-style: none;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .info-list li {
+      margin: 14px 0;
+      display: flex;
+      align-items: center;
+      padding: 14px 18px;
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    body.day-mode .info-list li {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    body.day-mode .info-list li:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(8px);
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+      border-color: rgba(102, 126, 234, 0.5);
+    }
+
+    body.night-mode .info-list li {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    body.night-mode .info-list li:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(8px);
+      box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+      border-color: rgba(138, 43, 226, 0.5);
+    }
+
+    /* 日间模式颜色 */
+    body.day-mode .info-list li:nth-child(1) { color: #5e35b1; }
+    body.day-mode .info-list li:nth-child(2) { color: #1e88e5; }
+    body.day-mode .info-list li:nth-child(3) { color: #00897b; }
+    body.day-mode .info-list li:nth-child(4) { color: #43a047; }
+
+    /* 夜间模式颜色 */
+    body.night-mode .info-list li:nth-child(1) { color: #bb86fc; }
+    body.night-mode .info-list li:nth-child(2) { color: #03dac6; }
+    body.night-mode .info-list li:nth-child(3) { color: #82b1ff; }
+    body.night-mode .info-list li:nth-child(4) { color: #69f0ae; }
+
+    .info-list .icon {
+      font-size: 1.4em;
+      margin-right: 15px;
+      min-width: 35px;
+      text-align: center;
+      transition: filter 0.3s ease;
+    }
+    
+    .info-list .icon.clickable {
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .info-list .icon.clickable:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 12px currentColor) !important;
+    }
+    
+    .info-list .icon.clickable:active {
+      transform: scale(0.9);
+    }
+
+    body.day-mode .info-list .icon {
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    body.night-mode .info-list .icon {
+      filter: drop-shadow(0 0 8px currentColor);
+    }
+
+    .highlight {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: text-shadow 0.8s ease;
+    }
+
+    body.night-mode .highlight {
+      text-shadow: 0 0 10px currentColor;
+    }
+
+    .counter-block {
+      margin-top: 28px;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    .counter-block img {
+      border-radius: 10px;
+      transition: box-shadow 0.8s ease;
+    }
+
+    body.day-mode .counter-block img {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    body.night-mode .counter-block img {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* 主题切换按钮 - 隐藏原来右上角的按钮 */
+    .theme-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      .container {
+        width: 100%;
+        padding: 24px;
+        min-height: 340px;
+      }
+      
+      .header .emoji {
+        font-size: 2em;
+      }
+      
+      .header .title {
+        font-size: 1.6em;
+      }
+      
+      .info-list {
+        font-size: 1em;
+      }
+      
+      .info-list li {
+        margin: 12px 0;
+        padding: 12px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content-inner">
+      <div class="header">
+        <div class="emoji" id="header-emoji" onclick="toggleTheme()" title="点击切换日夜主题">🌞</div>
+        <div class="title">欢迎您来自 <span id="location" class="highlight">定位中...</span> 的朋友！</div>
+      </div>
+      <ul class="info-list">
+        <li><span class="icon">🐳</span> 今天是 <span id="date"></span></li>
+        <li><span class="icon clickable" onclick="window.open('https://test.mye.ee/test.html', '_blank')" title="点击访问隐藏页面">🐾</span> 您的IP是：<span id="ip" class="highlight">获取中...</span></li>
+        <li><span class="icon">💦</span> 您使用的是 <span id="os"></span> 操作系统</li>
+        <li><span class="icon">🕸️</span> 您使用的是 <span id="browser"></span> 浏览器</li>
+      </ul>
+    </div>
+    <div class="counter-block">
+      <img src="https://moe.8845.top/get/?name=MyCounter&theme=capoo-1" alt="网站访问计数器" />
+    </div>
+  </div>
+
+  <script>
+    // 工具函数：根据时间自动设置主题
+    function autoSetTheme() {
+      const hour = new Date().getHours();
+      const isNight = hour >= 18 || hour < 6;
+      
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        setTheme(isNight ? 'night' : 'day');
+      }
+    }
+
+    // 设置主题
+    function setTheme(theme) {
+      const body = document.body;
+      const headerEmoji = document.getElementById('header-emoji');
+      
+      if (theme === 'night') {
+        body.className = 'night-mode';
+        headerEmoji.textContent = '🌙';
+      } else {
+        body.className = 'day-mode';
+        headerEmoji.textContent = '🌞';
+      }
+      
+      localStorage.setItem('theme', theme);
+    }
+
+    // 切换主题
+    function toggleTheme() {
+      const isNight = document.body.classList.contains('night-mode');
+      setTheme(isNight ? 'day' : 'night');
+    }
+
+    // 显示日期
+    function displayDate() {
+      const d = new Date();
+      const weekdays = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+      document.getElementById('date').textContent = 
+        `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日 ${weekdays[d.getDay()]}`;
+    }
+
+    // 获取操作系统
+    function getOS() {
+      const ua = navigator.userAgent;
+      if (ua.includes('Windows NT 10') || ua.includes('Windows NT 11')) return 'Windows 10/11';
+      if (ua.includes('Mac OS X')) return 'Mac OS';
+      if (ua.includes('Android')) return 'Android';
+      if (ua.includes('iPhone')) return 'iPhone';
+      if (ua.includes('Linux')) return 'Linux';
+      return '未知';
+    }
+
+    // 获取浏览器
+    function getBrowser() {
+      const ua = navigator.userAgent;
+      if (ua.includes('Chrome')) return `Chrome (${(ua.match(/Chrome\/([0-9.]+)/)?.[1] || '')})`;
+      if (ua.includes('Firefox')) return 'Firefox';
+      if (ua.includes('Safari') && !ua.includes('Chrome')) return 'Safari';
+      return '未知';
+    }
+
+    // 设置IP信息
+    function setIpInfo(ip, location) {
+      document.getElementById('ip').textContent = ip || '获取失败';
+      
+      let shortLocation = '未知地区';
+      if (location) {
+        shortLocation = location.split(/[—-]/)[0].trim();
+        const parts = shortLocation.split(/[,，、\s]+/)
+                          .map(p => p.trim())
+                          .filter(p => p);
+        
+        const uniqueParts = parts.filter((p, i) => i === 0 || p !== parts[i - 1]);
+        shortLocation = uniqueParts.slice(0, 3).join(' ');
+      }
+      
+      document.getElementById('location').textContent = shortLocation;
+    }
+
+    // 设置IP错误
+    function setIpError() {
+      document.getElementById('ip').textContent = '获取失败';
+      document.getElementById('location').textContent = '未知地区';
+    }
+
+    // JSONP回调
+    window.callback = function(ip, location) {
+      setIpInfo(ip, location);
+    };
+
+    // 初始化
+    autoSetTheme();
+    displayDate();
+    document.getElementById('os').textContent = getOS();
+    document.getElementById('browser').textContent = getBrowser();
+
+    // 超时处理
+    setTimeout(() => {
+      if (document.getElementById('ip').textContent === '获取中...') {
+        setIpError();
+      }
+    }, 10000);
+
+    // 每小时自动检查并更新主题
+    setInterval(autoSetTheme, 3600000);
+  </script>
+
+  <script src="https://ping0.cc/geo/jsonp/callback"></script>
+</body>
+</html>
