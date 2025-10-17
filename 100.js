@@ -1,4 +1,4 @@
-  <script>
+<script>
     // 工具函数：根据时间自动设置主题
     function autoSetTheme() {
       const hour = new Date().getHours();
