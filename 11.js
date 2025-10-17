@@ -1,0 +1,332 @@
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.8s ease;
+    }
+
+    /* 日间模式 */
+    body.day-mode {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    body.day-mode::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: cloudMove 40s linear infinite;
+    }
+
+    /* 夜间模式 */
+    body.night-mode {
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    }
+
+    body.night-mode::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: starMove 60s linear infinite;
+    }
+
+    @keyframes cloudMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-40px, -40px); }
+    }
+
+    @keyframes starMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-50px, -50px); }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      min-height: 380px;
+      margin: 20px auto;
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.8s ease;
+      z-index: 1;
+    }
+
+    /* 日间容器样式 */
+    body.day-mode .container {
+      background: transparent;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* 夜间容器样式 */
+    body.night-mode .container {
+      background: transparent;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+    }
+
+    .container::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      animation: glow 8s ease-in-out infinite;
+      pointer-events: none;
+      transition: background 0.8s ease;
+    }
+
+    body.day-mode .container::after {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    }
+
+    body.night-mode .container::after {
+      background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, transparent 70%);
+    }
+
+    @keyframes glow {
+      0%, 100% { opacity: 0.3; transform: rotate(0deg); }
+      50% { opacity: 0.6; transform: rotate(180deg); }
+    }
+
+    .content-inner {
+      flex: 1;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .header .emoji {
+      font-size: 2.5em;
+      margin-right: 15px;
+      animation: float 3s ease-in-out infinite;
+      transition: filter 0.8s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .header .emoji:hover {
+      transform: scale(1.15) rotate(15deg);
+      animation: none;
+    }
+    
+    .header .emoji:active {
+      transform: scale(0.95);
+    }
+
+    body.day-mode .header .emoji {
+      filter: drop-shadow(0 0 10px rgba(255, 223, 0, 0.6));
+    }
+
+    body.night-mode .header .emoji {
+      filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.6));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .header .title {
+      font-size: 2em;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 5px 0;
+      transition: all 0.8s ease;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    body.day-mode .header .title {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    body.night-mode .header .title {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .header .title .highlight {
+      font-weight: 900;
+    }
+
+
+
+    .info-list {
+      list-style: none;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .info-list li {
+      margin: 14px 0;
+      display: flex;
+      align-items: center;
+      padding: 14px 18px;
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    body.day-mode .info-list li {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    body.day-mode .info-list li:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(8px);
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+      border-color: rgba(102, 126, 234, 0.5);
+    }
+
+    body.night-mode .info-list li {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    body.night-mode .info-list li:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(8px);
+      box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+      border-color: rgba(138, 43, 226, 0.5);
+    }
+
+    /* 日间模式颜色 */
+    body.day-mode .info-list li:nth-child(1) { color: #5e35b1; }
+    body.day-mode .info-list li:nth-child(2) { color: #1e88e5; }
+    body.day-mode .info-list li:nth-child(3) { color: #00897b; }
+    body.day-mode .info-list li:nth-child(4) { color: #43a047; }
+
+    /* 夜间模式颜色 */
+    body.night-mode .info-list li:nth-child(1) { color: #bb86fc; }
+    body.night-mode .info-list li:nth-child(2) { color: #03dac6; }
+    body.night-mode .info-list li:nth-child(3) { color: #82b1ff; }
+    body.night-mode .info-list li:nth-child(4) { color: #69f0ae; }
+
+    .info-list .icon {
+      font-size: 1.4em;
+      margin-right: 15px;
+      min-width: 35px;
+      text-align: center;
+      transition: filter 0.3s ease;
+    }
+    
+    .info-list .icon.clickable {
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .info-list .icon.clickable:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 12px currentColor) !important;
+    }
+    
+    .info-list .icon.clickable:active {
+      transform: scale(0.9);
+    }
+
+    body.day-mode .info-list .icon {
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    body.night-mode .info-list .icon {
+      filter: drop-shadow(0 0 8px currentColor);
+    }
+
+    .highlight {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: text-shadow 0.8s ease;
+    }
+
+    body.night-mode .highlight {
+      text-shadow: 0 0 10px currentColor;
+    }
+
+    .counter-block {
+      margin-top: 28px;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    .counter-block img {
+      border-radius: 10px;
+      transition: box-shadow 0.8s ease;
+    }
+
+    body.day-mode .counter-block img {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    body.night-mode .counter-block img {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* 主题切换按钮 - 隐藏原来右上角的按钮 */
+    .theme-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 94%;
+        padding: 24px;
+        min-height: 340px;
+      }
+      
+      .header .emoji {
+        font-size: 2em;
+      }
+      
+      .header .title {
+        font-size: 1.6em;
+      }
+      
+      .info-list {
+        font-size: 1em;
+      }
+      
+      .info-list li {
+        margin: 12px 0;
+        padding: 12px 14px;
+      }
+    }
+  </style>
