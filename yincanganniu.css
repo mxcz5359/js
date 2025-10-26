@@ -1,0 +1,12 @@
+[id="radix-:r0:"],
+ [id*="radix-"][id*=":r0:"] {
+     display: none !important;
+}
+  /* 不显示右上角主题切换按钮 */
+ [id="radix-:r2:"],
+ [id*="radix-"][id*=":r2:"] {
+     display: none !important;
+}
+html > body > div:nth-of-type(1) > div > main > div:nth-of-type(2) > div > section > button:nth-of-type(3) {
+  display: none !important;
+}
