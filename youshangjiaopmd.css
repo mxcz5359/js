@@ -1,0 +1,31 @@
+  .sponsor-badge {
+    position: relative;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.6);
+    background: rgba(0,0,0,.38);
+    backdrop-filter: blur(6px);
+  }
+  .sponsor-badge::before {
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius: inherit;
+    padding:2px;
+    background: linear-gradient(90deg,#ff3b30,#ffcc00,#34c759,#007aff,#af52de,#ff3b30);
+    background-size: 200% 100%;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: sponsorBorder 6s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes sponsorBorder { to { background-position: 200% 0; } }
+  .dark .sponsor-badge { background: rgba(0,0,0,.28); }
+  .sponsor-badge:hover { filter: brightness(1.05); }
