@@ -78,12 +78,11 @@ footer {
     color: #87CEEB;
 }
 
+
 /* 🌤 通用毛玻璃卡片样式：适配所有 bg-card 类 */
 [class*="bg-card"] {
   background-color: rgba(255, 255, 255, 0.25) !important;
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-  border-radius: 12px;
+
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
   position: relative;
@@ -108,7 +107,7 @@ footer {
   box-shadow: 0 0 16px rgba(0, 200, 255, 0.3);
 }
 
-/* 🌈 渐变边框动画（可选） */
+/* ���� 渐变边框动画（可选） */
 [class*="bg-card"]::before {
   content: "";
   position: absolute;
@@ -127,6 +126,7 @@ footer {
 [class*="bg-card"]:hover::before {
   opacity: 1;
 }
+
     /* 不显示右上角语言切换按钮 */
  [id="radix-:r0:"] {
      display: none;
@@ -135,4 +135,3 @@ footer {
  [id="radix-:r2:"] {
      display: none;
 }
-
