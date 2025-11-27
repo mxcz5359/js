@@ -1,12 +1,12 @@
 .bg-neutral-100 {
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    --tw-bg-opacity: 1 !important; /* 流量条透明度变量 */
+    background-color: rgba(255, 255, 255, 0.6) !important;
+    --tw-bg-opacity: 1 !important; /* 保留透明度变量 */
 }
-/* 地图半透明灰色填充改为白色 */
+/* 半透明灰色填充改为白色 */
 .fill-neutral-200\/50 {
     fill: rgba(255, 255, 255, 0.7) !important; 
 }
-/* 地图框透明 */
+
 section.bg-card\/70 {
   background-color: transparent !important;
 }
@@ -51,7 +51,7 @@ footer {
 .bg-stone-200,
 .bg-stone-600,
 .bg-stone-900 {
-    background-color: rgba(0, 128, 128, 1) !important; /* 绿色主导的淡青色，50%强度 */
+    background-color: rgba(0, 128, 128, 0.5) !important; /* 绿色主导的淡青色，50%强度 */
     --tw-bg-opacity: 1 !important;
 }
 
@@ -62,7 +62,7 @@ footer {
 
 /* 次级背景 */
 .bg-secondary {
-    background-color: rgba(200, 180, 255, 0.85) !important; /* 淡紫色，半透明效果 */
+    background-color: rgba(200, 180, 255, 0.5) !important; /* 淡紫色，半透明效果 */
 }
 
 /* 弹出框背景 */
@@ -78,6 +78,55 @@ footer {
     color: #87CEEB;
 }
 
+
+/* 🌤 通用毛玻璃卡片样式：适配所有 bg-card 类 */
+[class*="bg-card"] {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* 🌙 暗色模式支持 */
+.dark [class*="bg-card"] {
+  background-color: rgba(30, 30, 30, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 🖱 鼠标悬停时的选中效果 */
+[class*="bg-card"]:hover {
+  transform: scale(1.02);
+  border-color: rgba(0, 200, 255, 0.6);
+  box-shadow: 0 0 16px rgba(0, 200, 255, 0.4);
+  cursor: pointer;
+}
+
+.dark [class*="bg-card"]:hover {
+  border-color: rgba(0, 200, 255, 0.4);
+  box-shadow: 0 0 16px rgba(0, 200, 255, 0.3);
+}
+
+/* ���� 渐变边框动画（可选） */
+[class*="bg-card"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,200,255,0.4), rgba(255,0,150,0.4));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+[class*="bg-card"]:hover::before {
+  opacity: 1;
+}
+
     /* 不显示右上角语言切换按钮 */
  [id="radix-:r0:"] {
      display: none;
@@ -85,8 +134,4 @@ footer {
   /* 不显示右上角主题切换按钮 */
  [id="radix-:r2:"] {
      display: none;
-}
-html > body > div:nth-of-type(1) > div > main > div:nth-of-type(2) > div > section > button:nth-of-type(3),
-html > body > div:nth-of-type(1) > div > main > div:nth-of-type(2) > div > section > div > div > div {
-  display: none !important;
 }
