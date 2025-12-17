@@ -1,0 +1,138 @@
+    /* === 最终版样式：全屏 + 交互优化 === */
+    :root {
+        --k-cyan: #00f0ff;
+        --k-green: #29ffc6;
+    }
+
+    /* 全屏容器 */
+    #earth-drawer-container {
+        position: fixed;
+        top: 0; right: 0; bottom: 0; left: 0;
+        width: 100vw; height: 100vh;
+        z-index: 99999;
+        
+        background: radial-gradient(ellipse at bottom, #05080d 0%, #000000 100%);
+        
+        transform: translateX(100%);
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        
+        display: flex; flex-direction: column;
+        overflow: hidden;
+        
+        /* 关键：未激活时不阻挡交互 */
+        pointer-events: none;
+    }
+
+    #earth-drawer-container.active { 
+        transform: translateX(0); 
+        pointer-events: auto; /* 激活时才可交互 */
+    }
+    
+    /* 星空Canvas - 最底层 */
+    #starfield-canvas {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0;
+        pointer-events: none;
+    }
+    
+    #earth-render-area { 
+        flex: 1; 
+        width: 100%; 
+        height: 100%; 
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* 顶部 */
+    .earth-header {
+        position: absolute; top: 0; left: 0; width: 100%;
+        padding: 30px 40px;
+        display: flex; justify-content: space-between; align-items: center;
+        z-index: 20; pointer-events: none;
+        background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+    }
+    
+    .earth-title {
+        color: var(--k-cyan);
+        font-family: 'Share Tech Mono', monospace;
+        letter-spacing: 3px; font-weight: 700; font-size: 28px;
+        text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+        pointer-events: auto;
+    }
+
+    /* HUD 面板 */
+    .earth-stats {
+        position: absolute; top: 120px; left: 40px; width: 240px;
+        color: #fff; font-family: 'Share Tech Mono', monospace; font-size: 14px;
+        z-index: 20; background: rgba(0, 5, 10, 0.6); padding: 20px;
+        border: 1px solid rgba(0, 240, 255, 0.2); border-left: 4px solid var(--k-cyan);
+        backdrop-filter: blur(4px); pointer-events: none;
+    }
+    
+    .earth-stats div { 
+        margin: 10px 0; display: flex; justify-content: space-between; 
+        border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 4px; 
+    }
+    
+    .earth-stats span { color: var(--k-cyan); font-weight: bold; }
+    .earth-stats .inactive { color: #666; }
+
+    /* 关闭按钮 */
+    #earth-close-btn {
+        pointer-events: auto; color: var(--k-cyan); background: rgba(0, 240, 255, 0.05);
+        border: 1px solid var(--k-cyan); padding: 10px 30px; font-size: 14px;
+        cursor: pointer; transition: 0.3s; font-family: 'Share Tech Mono', monospace;
+        letter-spacing: 2px;
+    }
+    
+    #earth-close-btn:hover { background: var(--k-cyan); color: #000; box-shadow: 0 0 20px var(--k-cyan); }
+
+    /* 悬浮球 */
+    #earth-toggle-btn {
+        position: fixed; bottom: 80px; right: 20px; width: 60px; height: 60px;
+        background: rgba(0, 10, 20, 0.9); border: 2px solid var(--k-cyan); border-radius: 50%;
+        cursor: pointer; z-index: 99998; box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        transition: 0.4s; display: flex; align-items: center; justify-content: center;
+    }
+    
+    #earth-toggle-btn:hover { transform: scale(1.1) rotate(90deg); box-shadow: 0 0 40px rgba(0, 240, 255, 0.6); border-color: #fff; }
+    #earth-toggle-btn.hidden { transform: translateX(150px) scale(0); opacity: 0; pointer-events: none; }
+
+    /* === 标签样式 (HUD 风格) === */
+    .earth-label-card {
+        background: rgba(4, 8, 12, 0.95) !important;
+        border: 1px solid var(--k-cyan) !important;
+        border-left: 4px solid var(--k-cyan) !important;
+        color: #fff !important;
+        padding: 8px 15px !important;
+        border-radius: 0 !important;
+        font-family: 'Share Tech Mono', monospace !important;
+        font-size: 13px !important;
+        display: flex !important; align-items: center !important; gap: 12px !important;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8) !important;
+        pointer-events: none !important;
+        white-space: nowrap !important;
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .earth-label-card.visible { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+        z-index: 99999; 
+    }
+    
+    .earth-label-card b { color: var(--k-cyan) !important; font-weight: normal; letter-spacing: 1px; }
+    .flag-display { transform: scale(0.6); display: flex; align-items: center; }
+
+    .earth-icon { width: 30px; height: 30px; fill: var(--k-cyan); }
+
+    @media (max-width: 768px) {
+        .earth-header { padding: 20px; }
+        .earth-title { font-size: 20px; }
+        .earth-stats { bottom: 40px; top: auto; left: 20px; width: calc(100% - 40px); background: rgba(0,0,0,0.8); }
+    }
