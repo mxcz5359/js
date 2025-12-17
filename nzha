@@ -1,0 +1,85 @@
+<meta name="referrer" content="no-referrer">
+<div class="video-box">
+  <video id="myVideo" muted
+    src="https://live2d.050002.xyz/1.mp4"
+    autoplay playsinline loop>
+  </video>
+</div>
+<style>
+  .video-box {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+
+<script>
+window.FixedTopServerName = true;
+window.CustomLogo = "https://lsky.050002.xyz/mylsky/2025102668fe05aa57429.png"; /* 自定义Logo */
+window.ShowNetTransfer  = "true"; /* 卡片上下行流量 */
+window.DisableAnimatedMan  = "true";    /* 关掉动画人物插图 */
+window.CustomDesc ="MyVps"; /* 自定义描述 */
+window.ForcePeakCutEnabled = true;
+window.ForceUseSvgFlag = true;
+window.ForceTheme = 'dark'; /* 强制主题色, 可选值为 light 或 dark */
+window.CustomLinks = '[{"link":"https://mxcz.uk/","name":"Mybox"},{"link":"https://test.mye.ee/test.html","name":"Test"}]';
+
+// 自定义字体：LXGW WenKai
+var link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont/style.css';
+document.head.appendChild(link);
+var imgObserver = new MutationObserver(function(mutationsList, observer) {
+  var xpath = "/html/body/div/div/main/div[2]/section[1]/div[4]/div";
+  var container = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+  if (container) {
+    observer.disconnect();
+    var existingImg = container.querySelector("img");
+    if (existingImg) {
+      container.removeChild(existingImg);
+    }
+    var imgElement = document.createElement("img");
+    imgElement.src = "https://lsky.050002.xyz/mylsky/2025102668fe05569be36.webp";
+    imgElement.style.position = "absolute";
+    imgElement.style.right = "-15px";
+    imgElement.style.top = "-70px";
+    imgElement.style.zIndex = "10000";
+    imgElement.style.width = "130px";  // ⭐️ 这里直接控制卡通人物宽度（高度会自动等比缩放）
+    container.appendChild(imgElement);
+  }
+});
+
+// 启动图片观察器
+imgObserver.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+</script>
+<button id="backToTop"></button>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/tomi.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/gailan.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/fanhui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/bolang.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/yincanganniu.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/youshangjiaopmd.css">
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/shangchuanxiazaiyanse.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/chname.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/wangluoyanse.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/xqchname.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/fanhui.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/bl6.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/4v3.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/jindutiao.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mxcz5359/js@main/youshangjiaopmd.js"></script>
+<script src="https://live2d.050002.xyz/1loads.js"></script> 
