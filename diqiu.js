@@ -399,28 +399,44 @@
         return Array.from(flags);
     }
 
+    // === 关键修改：所有国家相互连接 ===
     function generateData() {
         const codes = scanFlags();
         const points = [], arcs = [];
         if (codes.length === 0) return { points, arcs, codes };
-        const centerCode = 'DE'; 
-        const centerCoord = COORD_MAP['DE'];
+        
+        // 生成所有点
         codes.forEach(code => {
             const coord = COORD_MAP[code];
             if (coord) {
                 points.push({ code, lat: coord[0], lng: coord[1] });
-                if (code !== centerCode) {
+            }
+        });
+        
+        // 生成所有国家之间的相互连接（完全图）
+        for (let i = 0; i < codes.length; i++) {
+            for (let j = i + 1; j < codes.length; j++) {
+                const coord1 = COORD_MAP[codes[i]];
+                const coord2 = COORD_MAP[codes[j]];
+                
+                if (coord1 && coord2) {
                     arcs.push({
-                        startLat: centerCoord[0], startLng: centerCoord[1],
-                        endLat: coord[0], endLng: coord[1]
+                        startLat: coord1[0],
+                        startLng: coord1[1],
+                        endLat: coord2[0],
+                        endLng: coord2[1]
                     });
                 }
             }
-        });
+        }
+        
+        // 更新连接数显示
+        polygonCountEl.textContent = arcs.length;
+        
         return { points, arcs, codes };
     }
 
-    // === 3. 渲染 (使用中文名称) ===
+    // === 3. 渲染 ===
     async function initGlobe() {
         if (globeInstance) { updateGlobe(); return; }
         
@@ -515,12 +531,12 @@
             globe.polygonLabel(() => null);
 
             globe.arcsData(arcs);
-            globe.arcColor(() => ['rgba(0, 240, 255, 0.8)', 'rgba(41, 255, 198, 0.8)']);
-            globe.arcDashLength(0.1); 
-            globe.arcDashGap(0.05);
-            globe.arcDashAnimateTime(4000);
-            globe.arcStroke(0.2);
-            globe.arcAltitude(0.4);
+            globe.arcColor(() => ['rgba(0, 240, 255, 0.5)', 'rgba(41, 255, 198, 0.5)']);
+            globe.arcDashLength(0.15); 
+            globe.arcDashGap(0.08);
+            globe.arcDashAnimateTime(3000);
+            globe.arcStroke(0.15);
+            globe.arcAltitude(0.3);
 
             globe.pointsData(points);
             globe.pointColor(() => '#ffffff');
@@ -531,7 +547,6 @@
             globe.htmlElement(d => {
                 const el = document.createElement('div');
                 el.id = `earth-label-${d.code}`;
-                // 关键修改：显示中文名称
                 const countryName = COUNTRY_NAME_CN[d.code] || d.code;
                 el.innerHTML = `<div class="earth-label-card">
                     <div class="flag-display">${getFlagHTML(d.code)}</div>
