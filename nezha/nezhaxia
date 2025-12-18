@@ -1,0 +1,40 @@
+<script>
+(function() {
+  function replaceImage(selector, oldSrc, newSrc) {
+    const el = document.querySelector(selector);
+    if (el && el.getAttribute("src") === oldSrc) {
+      el.setAttribute("src", newSrc);
+    }
+  }
+
+  function replaceText(selector, oldText, newText) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+    el.childNodes.forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.includes(oldText)) {
+        node.textContent = node.textContent.replace(oldText, newText);
+      }
+    });
+  }
+
+  function apply() {
+    replaceImage('img[alt="animated-man"]', '/dashboard/animated-man.webp', 'https://lsky.050002.xyz/mylsky/2025102668fe05569be36.webp');
+    replaceImage('img[src="/dashboard/logo.svg"]', '/dashboard/logo.svg', 'https://mxcz.useruno.com/mxcz5359/2025073068898fa1e0c2e.png');
+    replaceImage('img[src="https://api.dicebear.com/7.x/notionists/svg?seed=mxcz"]', 'https://api.dicebear.com/7.x/notionists/svg?seed=mxcz', 'https://cdn.jsdelivr.net/gh/mxcz5359/clash/头像.png');
+    replaceText('a[href="/dashboard"]', '哪吒监控', '喵窝');
+    replaceText('footer', '哪吒监控', 'My探针');
+  }
+  
+  apply();
+  const observer = new MutationObserver(apply);
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
+<style>
+  html, body {
+    height: 100% !important;
+    background: url("https://lsky.050002.xyz/mylsky/2025121869436562d93c3.png") no-repeat center center fixed !important;
+    background-size: cover !important;
+  }
+
+</style>
