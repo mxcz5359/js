@@ -1,0 +1,308 @@
+    /* 地球组件样式 - 使用前缀避免冲突 */
+    .dual-earth-widget {
+        position: relative;
+    }
+
+    .dual-earth-widget * {
+        box-sizing: border-box;
+    }
+
+    /* ========== 主容器 ========== */
+    #dual-earth-container {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-120%);
+        width: 95%;
+        max-width: 1800px;
+        height: 95vh;
+        max-height: 900px;
+        overflow: hidden;
+        z-index: 10000;
+        background: linear-gradient(135deg, rgba(0, 5, 15, 0.98), rgba(0, 10, 25, 0.98));
+        border: 2px solid rgba(0, 255, 255, 0.4);
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 255, 255, 0.3);
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        pointer-events: none;
+    }
+
+    #dual-earth-container.de-active { 
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* ========== 头部控制栏 ========== */
+    .de-earth-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 25px;
+        background: rgba(0, 20, 40, 0.8);
+        border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        flex-shrink: 0;
+    }
+
+    .de-earth-title {
+        color: #00ffff;
+        font-family: 'Segoe UI', monospace;
+        letter-spacing: 3px;
+        font-weight: 700;
+        font-size: 18px;
+        text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+        margin: 0;
+    }
+
+    .de-earth-controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    /* ========== 模式切换按钮 ========== */
+    .de-mode-switch {
+        display: flex;
+        background: rgba(0, 40, 60, 0.6);
+        border-radius: 20px;
+        padding: 4px;
+        border: 1px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .de-mode-btn {
+        padding: 8px 20px;
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        border-radius: 16px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.3s;
+        letter-spacing: 1px;
+        font-family: inherit;
+    }
+
+    .de-mode-btn:hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .de-mode-btn.de-active {
+        background: linear-gradient(135deg, #00ffff, #0080ff);
+        color: #000;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    }
+
+    /* ========== 关闭按钮 ========== */
+    .de-close-btn {
+        padding: 8px 20px;
+        background: rgba(255, 50, 50, 0.2);
+        border: 1px solid rgba(255, 100, 100, 0.4);
+        color: #ff6666;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.3s;
+        letter-spacing: 1px;
+        font-family: inherit;
+    }
+
+    .de-close-btn:hover {
+        background: rgba(255, 50, 50, 0.4);
+        border-color: rgba(255, 100, 100, 0.8);
+        color: #ffaaaa;
+        box-shadow: 0 0 15px rgba(255, 100, 100, 0.4);
+    }
+
+    /* ========== 渲染区域 ========== */
+    #dual-earth-render-area { 
+        flex: 1; 
+        width: 100%; 
+        height: 100%; 
+        min-height: 0;
+        overflow: hidden; 
+        cursor: grab;
+        position: relative;
+    }
+
+    #dual-earth-render-area:active { 
+        cursor: grabbing; 
+    }
+
+    /* ========== 悬浮触发按钮 ========== */
+    #dual-earth-toggle-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        cursor: pointer;
+        z-index: 99998;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+    }
+
+    #dual-earth-toggle-btn.de-hidden {
+        transform: translateX(150px) scale(0);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    #dual-earth-toggle-btn::before {
+        content: '';
+        position: absolute;
+        top: -2px; left: -2px; right: -2px; bottom: -2px;
+        background: linear-gradient(45deg, #00ffff, #0080ff, #8000ff, #ff00ff, #ff0080, #00ffff);
+        background-size: 400% 400%;
+        border-radius: 22px;
+        z-index: -1;
+        opacity: 0;
+        animation: de-gradientBorder 3s ease infinite;
+        transition: opacity 0.4s;
+    }
+
+    #dual-earth-toggle-btn:hover::before { 
+        opacity: 1; 
+    }
+
+    @keyframes de-gradientBorder {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    #dual-earth-toggle-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(0, 255, 255, 0.4), 0 8px 20px rgba(31, 38, 135, 0.5);
+        border-color: rgba(0, 255, 255, 0.5);
+    }
+
+    .de-earth-icon {
+        width: 40px;
+        height: 40px;
+        filter: drop-shadow(0 2px 8px rgba(0, 255, 255, 0.5));
+        animation: de-floatIcon 3s ease-in-out infinite;
+    }
+
+    @keyframes de-floatIcon {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+
+    /* ========== 标签卡片 ========== */
+    .de-earth-label-card {
+        background: linear-gradient(135deg, rgba(0, 20, 40, 0.98), rgba(0, 10, 30, 0.98)) !important;
+        border: 2px solid #00ffff !important;
+        color: #fff !important;
+        padding: 8px 14px !important;
+        border-radius: 8px !important;
+        font-size: 14px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.7) !important;
+        white-space: nowrap !important;
+        font-family: 'Consolas', monospace !important;
+        pointer-events: none !important;
+        transform: translate(-50%, -50%);
+    }
+
+    .de-earth-label-card .de-flag-display { 
+        display: flex !important; 
+        align-items: center !important; 
+        min-width: 24px !important; 
+    }
+
+    .de-earth-label-card .de-flag-emoji { 
+        font-size: 22px !important; 
+        font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif !important; 
+    }
+
+    .de-earth-label-card .de-flag-img { 
+        width: 24px !important; 
+        height: 18px !important; 
+        border-radius: 2px !important; 
+    }
+
+    .de-earth-label-card b { 
+        color: #00ffff !important; 
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8) !important; 
+    }
+
+    /* ========== 响应式 ========== */
+    @media (max-width: 1200px) {
+        #dual-earth-container {
+            max-height: 800px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #dual-earth-toggle-btn { 
+            width: 55px; 
+            height: 55px; 
+            bottom: 20px; 
+            right: 15px; 
+        }
+
+        .de-earth-icon { 
+            width: 30px; 
+            height: 30px; 
+        }
+
+        #dual-earth-container { 
+            top: 10px;
+            transform: translateX(-50%) translateY(-120%);
+            height: 95vh;
+            max-height: none;
+            width: 98%;
+        }
+
+        #dual-earth-container.de-active {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .de-earth-header {
+            padding: 10px 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .de-earth-title {
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .de-mode-btn, .de-close-btn {
+            padding: 6px 14px;
+            font-size: 11px;
+        }
+
+        .de-earth-label-card {
+            padding: 4px 8px !important;
+            font-size: 10px !important;
+            gap: 4px !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #dual-earth-container { 
+            top: 5px;
+            height: 95vh;
+            max-height: none;
+            width: 100%;
+            border-radius: 8px;
+        }
+    }
