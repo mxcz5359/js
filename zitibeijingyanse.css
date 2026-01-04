@@ -1,0 +1,97 @@
+/* 半透明灰色填充改为白色 */
+.fill-neutral-200\/50 {
+    fill: rgba(255, 255, 255, 0.7) !important; 
+}
+
+kbd.bg-muted {  /* 移除页脚右键盘符号及字母 */
+  display: none !important;
+}
+
+footer {
+  display: none !important;
+}
+
+.fill-green-700 {
+    fill: #0f9d58 !important; /* 浓翡翠绿 */
+}
+
+.from-green-500\/90 { /* 在线率进度条 */
+    background-image: linear-gradient(
+        to bottom,
+        rgb(180, 245, 255) 0%,   
+        rgb(180, 245, 255) 40%,  /* 青蓝占比 70% */
+        rgb(255, 255, 255) 100%  /* 底部白色 */
+    ) !important;
+}
+
+.from-red-500\/80 {
+    --tw-gradient-from: rgb(255, 80, 80);
+    --tw-gradient-via: rgb(200, 80, 200);
+    --tw-gradient-to: rgb(160, 80, 255);
+}
+
+.text-muted-foreground {
+    color: #87CEEB;
+}
+
+  .dark .text-muted-foreground {
+    color: #87CEEB;
+}
+
+/* 🌤 通用毛玻璃卡片样式：适配所有 bg-card 类 */
+[class*="bg-card"] {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* 🌙 暗色模式支持 */
+.dark [class*="bg-card"] {
+  background-color: rgba(30, 30, 30, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* 🖱 鼠标悬停时的选中效果 */
+[class*="bg-card"]:hover {
+  transform: scale(1.02);
+  border-color: rgba(0, 200, 255, 0.6);
+  box-shadow: 0 0 16px rgba(0, 200, 255, 0.4);
+  cursor: pointer;
+}
+
+.dark [class*="bg-card"]:hover {
+  border-color: rgba(0, 200, 255, 0.4);
+  box-shadow: 0 0 16px rgba(0, 200, 255, 0.3);
+}
+
+/*      渐变边框动画（可选） */
+[class*="bg-card"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,200,255,0.4), rgba(255,0,150,0.4));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+[class*="bg-card"]:hover::before {
+  opacity: 1;
+}
+
+/* 次级背景 */
+.bg-secondary {
+    background-color: rgba(200, 180, 255, 0.7) !important; /* 淡紫色，半透明效果 */
+}
+
+@layer theme {
+    :root,:host {
+        --color-muted-foreground: #ffffff !important;
+        --color-card-foreground: #ffffff !important;
+    }
+}
