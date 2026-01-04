@@ -1,3 +1,9 @@
+::-webkit-scrollbar { width: 5px !important; height: 5px !important; }
+
+.bg-neutral-100 {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+    --tw-bg-opacity: 1 !important; /* 保留透明度变量 */
+}
 /* 半透明灰色填充改为白色 */
 .fill-neutral-200\/50 {
     fill: rgba(255, 255, 255, 0.7) !important; 
