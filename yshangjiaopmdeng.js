@@ -1,5 +1,5 @@
 ;(function(){
-  const TARGET_TEXTS = ["登录", "管理后台"];
+  const TARGET_TEXTS = ["登录", "管理后台", "🗺️My Map"];
 
   const decorate = (a) => {
     // 忽略含 <img> 的 sponsor 链接（避免影响跑马灯中的 logo）
