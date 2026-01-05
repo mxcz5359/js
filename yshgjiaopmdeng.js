@@ -1,5 +1,5 @@
 ;(function(){
-  const TARGET_TEXTS = ["登录", "管理后台", "服务器总数"];
+  const TARGET_TEXTS = ["登录", "管理后台", "apple-touch-icon喵窝"];
 
   const decorate = (a) => {
     // 忽略含 <img> 的 sponsor 链接（避免影响跑马灯中的 logo）
